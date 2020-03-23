@@ -2,10 +2,10 @@ import { render } from './render'
 
 export const changeInput = (e) => {
   defaultData.commandsBar.inputState = e.target.value;
+  render(defaultData)
 }
 
 const shuffleButtonClick = (e) => {
-  console.log("123");
   defaultData.commandsBar.disabledBtns.shuffle = true;
   render(defaultData)
   console.log(defaultData.commandsBar.inputState);
@@ -66,7 +66,6 @@ const shuffleButtonClick = (e) => {
         defaultData.commandsBar.activeStep = -1;
         defaultData.commandsBar.disabledBtns.shuffle = false;
         defaultData.commandsBar.inputState = "";
-        document.querySelector("#root > div > div.Command_container__DhWpP > input").value = "";
         render(defaultData);
       })
       .catch(err => {
@@ -133,7 +132,7 @@ const getStep = (move) => {
 
 const solveButtonClick = (e) => {
   // let btn = document.querySelector("#root > div > div.Command_container__DhWpP > button:nth-child(3)");
-  defaultData.commandsBar.disabledBtns.step = false;
+  defaultData.commandsBar.disabledBtns.solve = true;
   render(defaultData);
   let data = "";
   for (let i = 0; i < defaultData.cube.sides.length; i++)
@@ -154,6 +153,7 @@ const solveButtonClick = (e) => {
       defaultData.commandsBar.solve = commits.solve.split(',');
       defaultData.commandsBar.activeStep = -1;
       defaultData.commandsBar.disabledBtns.step = false;
+      defaultData.commandsBar.disabledBtns.solve = false;
       render(defaultData);
     });
 }
@@ -163,7 +163,7 @@ const stepButtonClick = (e) => {
   if (index >= defaultData.commandsBar.solve.length) {
     defaultData.commandsBar.activeStep = 0;
     index = 0;
-    defaultData.commandsBar.stepBtn = true;
+    defaultData.commandsBar.disabledBtns.step = true;
     render(defaultData);
   }
   else {
