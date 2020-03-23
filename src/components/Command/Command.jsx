@@ -6,9 +6,9 @@ const Command = (props) =>{
     return (
         <div className = {c.container}>
             <input onChange={props.state.callbacks.onChangeInput} className={c.input} type="text" placeholder="Формула смешивания"/>
-            <button onClick={props.state.callbacks.onShuffleButtonClick} className={c.input}>Shuffle</button>
-            <button onClick={props.state.callbacks.onSolveButtonClick} className={c.input}>Solve</button>
-            <button onClick={props.state.callbacks.onStepButtonClick} disabled={props.state.stepBtn} className={c.input}>Step</button>
+            <button onClick={props.state.callbacks.onShuffleButtonClick} disabled={props.state.disabledBtns.shuffle} className={c.input}>Shuffle</button>
+            <button onClick={props.state.callbacks.onSolveButtonClick} disabled={props.state.disabledBtns.solve} className={c.input}>Solve</button>
+            <button onClick={props.state.callbacks.onStepButtonClick} disabled={props.state.disabledBtns.step} className={c.input}>Step</button>
             <div >
                 {props.state.solve.map((step, index) =>{
                     {

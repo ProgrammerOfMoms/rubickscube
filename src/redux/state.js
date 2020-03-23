@@ -6,7 +6,8 @@ export const changeInput = (e) => {
 
 const shuffleButtonClick = (e) => {
   let btn = document.querySelector("#root > div > div.Command_container__DhWpP > button:nth-child(2)")
-  btn.disabled = true;
+  defaultData.commandsBar.disabledBtns.shuffle = true;
+  render(defaultData)
   console.log(defaultData.commandsBar.inputState);
   if (defaultData.commandsBar.inputState == "") {
     console.log('here');
@@ -25,7 +26,7 @@ const shuffleButtonClick = (e) => {
       .then(commits => {
         defaultData.cube.sides = commits.cube.sides;
         defaultData.commandsBar.activeStep = -1;
-        btn.disabled = false;
+        defaultData.commandsBar.disabledBtns.shuffle = false;
         defaultData.commandsBar.inputState = "";
         document.querySelector("#root > div > div.Command_container__DhWpP > input").value = "";
         render(defaultData);
@@ -48,7 +49,7 @@ const shuffleButtonClick = (e) => {
       step = getStep(moves[i]);
       if (!step) {
         alert("Неверно записаны повороты граней!");
-        btn.disabled = false;
+        defaultData.commandsBar.disabledBtns.shuffle = false;
         return;
       } else steps.push(step);
     }
@@ -132,7 +133,8 @@ const getStep = (move) => {
 
 const solveButtonClick = (e) => {
   let btn = document.querySelector("#root > div > div.Command_container__DhWpP > button:nth-child(3)");
-  btn.disabled = true;
+  defaultData.commandsBar.disabledBtns.step = false;
+  render(defaultData);
   let data = "";
   for (let i = 0; i < defaultData.cube.sides.length; i++)
     data += defaultData.cube.sides[i].cells.join("");
@@ -151,8 +153,7 @@ const solveButtonClick = (e) => {
     .then(commits => {
       defaultData.commandsBar.solve = commits.solve.split(',');
       defaultData.commandsBar.activeStep = -1;
-      defaultData.commandsBar.stepBtn = false;
-      btn.disabled = false;
+      defaultData.commandsBar.disabledBtns.step = false;
       render(defaultData);
     });
 }
@@ -196,6 +197,11 @@ let defaultData = {
     "solve": [],
     "activeStep": 0,
     "stepBtn": false,
+    "disabledBtns": {
+      "shuffle": false,
+      "solve": false,
+      "step": false
+    }
   }
 }
 
