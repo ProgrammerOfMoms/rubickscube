@@ -5,10 +5,10 @@ import c from './Command.module.css';
 const Command = (props) =>{
     return (
         <div className = {c.container}>
-            <input onChange={props.state.callbacks.onChangeInput} className={c.input} value = {props.state.inputState} type="text" placeholder="Формула смешивания"/>
-            <button onClick={props.state.callbacks.onShuffleButtonClick} disabled={props.state.disabledBtns.shuffle} className={c.input}>Shuffle</button>
-            <button onClick={props.state.callbacks.onSolveButtonClick} disabled={props.state.disabledBtns.solve} className={c.input}>Solve</button>
-            <button onClick={props.state.callbacks.onStepButtonClick} disabled={props.state.disabledBtns.step} className={c.input}>Step</button>
+            <input onChange={props.onChangeInput} className={c.input} value = {props.state.inputState} type="text" placeholder="Формула смешивания"/>
+            <button onClick={props.onShuffleButtonClick} disabled={props.state.disabledBtns.shuffle} className={c.input}>Shuffle</button>
+            <button onClick={props.onSolveButtonClick} disabled={props.state.disabledBtns.solve} className={c.input}>Solve</button>
+            <button onClick={props.onStepButtonClick} disabled={props.state.disabledBtns.step} className={c.input}>Step</button>
             <div >
                 {props.state.solve.map((step, index) =>{
                     {
