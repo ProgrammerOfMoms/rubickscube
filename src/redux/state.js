@@ -5,7 +5,6 @@ export const changeInput = (e) => {
 }
 
 const shuffleButtonClick = (e) => {
-  let btn = document.querySelector("#root > div > div.Command_container__DhWpP > button:nth-child(2)")
   defaultData.commandsBar.disabledBtns.shuffle = true;
   render(defaultData)
   console.log(defaultData.commandsBar.inputState);
@@ -28,7 +27,6 @@ const shuffleButtonClick = (e) => {
         defaultData.commandsBar.activeStep = -1;
         defaultData.commandsBar.disabledBtns.shuffle = false;
         defaultData.commandsBar.inputState = "";
-        document.querySelector("#root > div > div.Command_container__DhWpP > input").value = "";
         render(defaultData);
       });
   } else {
@@ -65,13 +63,14 @@ const shuffleButtonClick = (e) => {
       .then(commits => {
         defaultData.cube.sides = commits.cube.sides;
         defaultData.commandsBar.activeStep = -1;
-        btn.disabled = false;
+        defaultData.commandsBar.disabledBtns.shuffle = false;
         defaultData.commandsBar.inputState = "";
         document.querySelector("#root > div > div.Command_container__DhWpP > input").value = "";
         render(defaultData);
       })
       .catch(err => {
-        btn.disabled = false;
+        defaultData.commandsBar.disabledBtns.shuffle = false;
+        render(defaultData);
         alert("Неверно записаны повороты граней!");
       });
   }
@@ -132,7 +131,7 @@ const getStep = (move) => {
 }
 
 const solveButtonClick = (e) => {
-  let btn = document.querySelector("#root > div > div.Command_container__DhWpP > button:nth-child(3)");
+  // let btn = document.querySelector("#root > div > div.Command_container__DhWpP > button:nth-child(3)");
   defaultData.commandsBar.disabledBtns.step = false;
   render(defaultData);
   let data = "";
