@@ -1,0 +1,36 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid black;
+}
+
+.top{
+    grid-column-start: 2; 
+    grid-column-end: 3; 
+    border-bottom: none;
+}
+.left{
+    grid-column-start: 1; 
+    grid-column-end: 2;
+    border-right: none;
+}
+.front{
+    grid-column-start: 2; 
+    grid-column-end: 3; 
+}
+.right{
+    grid-column-start: 3; 
+    grid-column-end: 4; 
+    border-left: none;
+}
+.back{
+    grid-column-start: 4; 
+    grid-column-end: 5; 
+    border-left: none;
+}
+.bottom{
+    grid-column-start: 2; 
+    grid-column-end: 3; 
+    border-top: none;
+}
