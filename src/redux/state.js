@@ -5,6 +5,7 @@ export const changeInput = (e) => {
 }
 
 const shuffleButtonClick = (e) => {
+  console.log("123");
   defaultData.commandsBar.disabledBtns.shuffle = true;
   render(defaultData)
   console.log(defaultData.commandsBar.inputState);
@@ -14,7 +15,7 @@ const shuffleButtonClick = (e) => {
       return min + Math.floor((max - min) * Math.random());
     }
     let obj = { "count": rand(1, 30) }
-    let response = fetch('http://localhost:8000/cube/shuffle/', {
+    let response = fetch('/cube/shuffle/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -52,7 +53,7 @@ const shuffleButtonClick = (e) => {
       } else steps.push(step);
     }
     obj.moves = steps;
-    let response = fetch('http://localhost:8000/cube/take_moves/', {
+    let response = fetch('/cube/take_moves/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -90,7 +91,7 @@ const setStep = (step, index) => {
       "count": step.count
     }
   }
-  let response = fetch('http://localhost:8000/cube/step/', {
+  let response = fetch('/cube/step/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
@@ -141,7 +142,7 @@ const solveButtonClick = (e) => {
     "cube_state": data,
     "alg": "Kociemba"
   }
-  let response = fetch('http://localhost:8000/cube/solve/', {
+  let response = fetch('/cube/solve/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
