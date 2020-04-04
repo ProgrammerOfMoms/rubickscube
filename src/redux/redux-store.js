@@ -1,6 +1,9 @@
-import { createStore } from "redux";
-import defaultData from "./state";
+import { createStore, combineReducers } from "redux";
+import cubeReducer from "./CubePageReducer";
 
-let store = createStore();
+let reducers = combineReducers({cubeReducer});
+
+
+let store = createStore(reducers);
 
 export default store;
