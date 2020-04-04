@@ -7,61 +7,6 @@ const UPDATE_INPUT = "UPDATE_INPUT";
 const IS_FETCHING = "IS_FETCHING";
 const SET_STEP_INDEX = "SET_STEP_INDEX"
 
-// const getStep = (move) => {
-//     let step = {
-//       "side": move[0],
-//       "clockwise": true,
-//       "count": 0
-//     }
-//     if (move.length == 1) {
-//       step.clockwise = true;
-//       step.count = 1;
-//     }
-//     else if (move.length == 2 && move[1] == "'") {
-//       step.clockwise = false;
-//       step.count = 1;
-//     } else if (move.length == 2 && move[1] != "'") {
-//       step.clockwise = true;
-//       step.count = parseInt(move[1]);
-//     }
-//     else if (move.length == 3) {
-//       step.clockwise = false;
-//       step.count = parseInt(move[2]);
-//     }
-//     else return false;
-//     return step;
-// }
-
-// const setStep = (step, index, state) =>{
-//     let cube = ""
-//     for (let i = 0; i < state.cube.sides.length; i++) {
-//       cube += state.cube.sides[i].cells.join("");
-//     }
-//     let obj = {
-//       "cube_state": cube,
-//       "step":
-//       {
-//         "side": step.side,
-//         "clockwise": step.clockwise,
-//         "count": step.count
-//       }
-//     }
-//     let response = fetch('/cube/step/', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json;charset=utf-8'
-//       },
-//       body: JSON.stringify(obj)
-//     })
-//       .then(res => res.json())
-//       .then(commits => {
-//         state.commandsBar.activeStep = index;
-//         state.cube.sides = commits.cube.sides;
-//         return state;
-//       });
-//     return state;
-// }
-
 
 export const shuffleSuccess = (cube) => ({type: SHUFFLE, cube: cube})
 export const solveSuccess = (solve) => ({type: SOLVE, solve: solve})
@@ -192,7 +137,7 @@ let initialState = {
         commandsBar: {
         inputState: "",
         commands: [],
-        solve: [],
+        solve_path: [],
         activeStep: 0,
         stepBtn: false,
         disabledBtns: {
@@ -210,7 +155,7 @@ const cubePageReducer = (state=initialState, action) => {
             newState.cube = action.cube;
             return newState;
         case SOLVE:
-            newState.commandsBar.solve = action.solve;
+            newState.commandsBar.solve_path = action.solve;
             newState.commandsBar.activeStep = -1;
             return newState;
         case STEP:

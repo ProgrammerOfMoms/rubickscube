@@ -1,4 +1,4 @@
-.container{
+.cubeContainer{
     width: 80%;
     height: 90%;
     margin: 0 auto;
@@ -9,4 +9,32 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+}
+
+.commandContainer{
+    display: flex;
+    width: 80%;
+    max-width: 822px;
+    height: 10%;
+    margin: 0 auto;
+    justify-content: flex-start;
+}
+.input{
+    height: 25px;
+    margin: 2px;
+}
+.container input{
+    height: 20px;
+    border: 1px solid black;
+}
+
+.containee:first-child{
+    margin-left: 0;
+}
+.output{
+    margin-left: 5px;
+}
+.active{
+    color: blue;
+    border: 1px solid black;
 }

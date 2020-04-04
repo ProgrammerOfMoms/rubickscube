@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import CubePageContainer from './components/CubePage/CubePageContainer';
+import CubePage from './components/CubePage/CubePage';
 
 const App = (props) => {
   return (
     <div className="App">
-      <CubePageContainer reducer={props.reducers.cubePageReducer}
+      <CubePage reducer={props.reducers.cubePageReducer}
                 dispatch={props.dispatch}/>
     </div>
   );
